@@ -1,26 +1,41 @@
+
+<a name="top"></a> 
 # AWS instance meta data service
 
 Reference: [AWS User Guide - Instance data retrieval]( https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html)
 
+Contents:
+- [Versions](#versions)
+- [Options](#options)
+- [Amazon machine image (AMI) ID](#ami_id)
+- [Amazon machine image (AMI) launch index value](#ami_launch_index)
+- [Amazon manifest path](#amazon_manifest_path)
+- [Block device mapping](#block_device_mapping)
+- [Events](#events)
+- [Hostname](#hostname)
+- [IAM](#iam)
+- [Instance action](#instance_action)
+- [Instance ID](#instance_id)
+- [Instance life cycle](#instance_life_cycle)
+- [Instance type](#instance_type)
+- [Local hostname](#local_hostname)
+- [Local IP4](#local_ip4)
+- [MAC address](#mac_address)
+- [Metrics](#metrics)
+- [Network](#network)
+- [Placement](#placement)
+- [Profile](#profile)
+- [Public hostname](#public_hostname)
+- [Public IP4](#public_ip4)
+- [Public keys](#public_keys)
+- [Reservation ID](#reservation_id)
+- [Security groups](#security_groups)
+- [Services](#services)
+
 ---
 
-## Dependency
-
-To filter JSON meta data service responses I am using **jq**:
-
-### Amazon Linux install
-```bash
-sudo yum install jq
-```
-
-### Ubuntu/Debian install
-```bash
-sudo apt install jq
-```
-
----
-
-## Get all available version of instance meta data service
+<a name="versions"></a> 
+## Versions
 
 According to the AWS documentation, "the earlier versions are available to you in case you have scripts that rely on the structure and information present in a previous version."
 
@@ -67,9 +82,12 @@ For a specific version (e.g. 2021-01-03):
 curl http://169.254.169.254/2021-01-03/meta-data/
 ```
 
+[[Back to top]](#top)
+
 ---
 
-## Get the top-level metadata items
+<a name="options"></a>
+## Options
 
 Using latest version:
 ```bash
@@ -103,8 +121,11 @@ reservation-id
 security-groups
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="ami_id"></a>
 ## Amazon machine image (AMI) ID
 
 ```bash
@@ -115,8 +136,11 @@ curl http://169.254.169.254/latest/meta-data/ami-id
 ami-07f990e4e7551b774
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="ami_launch_index"></a>
 ## Amazon machine image (AMI) launch index value
 
 When running up new instances (aws ec2 run-instances) and running up multiple instances of the same AMI (using the count option).
@@ -132,9 +156,11 @@ curl http://169.254.169.254/latest/meta-data/ami-launch-index
 ```bash
 0
 ```
+[[Back to top]](#top)
 
 ---
 
+<a name="amazon_manifest_path"></a>
 ## Amazon manifest path
 
 ```bash
@@ -145,8 +171,11 @@ curl http://169.254.169.254/latest/meta-data/ami-manifest-path
 (unknown)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="block_device_mapping"></a>
 ## Block device mapping
 
 ```bash
@@ -166,8 +195,11 @@ curl http://169.254.169.254/latest/meta-data/block-device-mapping/ami
 xvda(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="events"></a>
 ## Events
 
 ```bash
@@ -196,9 +228,10 @@ curl http://169.254.169.254/latest/meta-data/events/maintenance/history
 [](python3)
 ```
 
+[[Back to top]](#top)
 
 ---
-
+<a name="hostname"></a>
 ## Hostname
 
 ```bash
@@ -209,8 +242,10 @@ curl http://169.254.169.254/latest/meta-data/hostname
 ip-123-45-67-89.us-east-1.compute.internal(python3)
 ```
 
----
+[[Back to top]](#top)
 
+---
+<a name="iam"></a>
 ## IAM
 
 ```bash
@@ -230,8 +265,10 @@ curl http://169.254.169.254/latest/meta-data/iam/security-credentials
 example_iam_role(python3)
 ```
 
----
+[[Back to top]](#top)
 
+---
+<a name="instance_action"></a>
 ## Instance action
 
 ```bash
@@ -242,8 +279,11 @@ curl http://169.254.169.254/latest/meta-data/instance-action
 none(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="instance_id"></a>
 ## Instance ID
 
 ```bash
@@ -255,7 +295,7 @@ i-1234d5bf6f789b123(python3)
 ```
 
 ---
-
+<a name="instance_life_cycle"></a>
 ## Instance life cycle
 
 ```bash
@@ -266,8 +306,10 @@ curl http://169.254.169.254/latest/meta-data/instance-life-cycle
 on-demand(python3)
 ```
 
----
+[[Back to top]](#top)
 
+---
+<a name="instance_type"></a>
 ## Instance type
 
 ```bash
@@ -278,8 +320,11 @@ curl http://169.254.169.254/latest/meta-data/instance-type
 t3.micro(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="local_hostname"></a>
 ## Local hostname
 
 ```bash
@@ -290,8 +335,11 @@ curl http://169.254.169.254/latest/meta-data/local-hostname
 ip-172-12-34-56.us-east-1.compute.internal(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="local_ip4"></a>
 ## Local IP4
 
 ```bash
@@ -302,8 +350,11 @@ curl http://169.254.169.254/latest/meta-data/local-ipv4
 172.12.34.56(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="mac_address"></a>
 ## MAC address
 
 ```bash
@@ -314,8 +365,11 @@ curl http://169.254.169.254/latest/meta-data/mac
 12:3a:c4:a5:c6:d7(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="metrics"></a>
 ## Metrics
 
 ```bash
@@ -335,9 +389,11 @@ curl http://169.254.169.254/latest/meta-data/metrics/vhostmd
 <?xml version="1.0" encoding="UTF-8"?>(python3) 
 ```
 
+[[Back to top]](#top)
 
 ---
 
+<a name="network"></a>
 ## Network
 
 ```bash
@@ -366,8 +422,11 @@ curl http://169.254.169.254/latest/meta-data/network/interfaces/macs
 12:3a:c4:a5:c6:d7(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="placement"></a>
 ## Placement
 
 ```bash
@@ -397,9 +456,11 @@ curl http://169.254.169.254/latest/meta-data/placement/region
 us-east-1(python3)
 ```
 
+[[Back to top]](#top)
 
 ---
 
+<a name="profile"></a>
 ## Profile
 
 ```bash
@@ -410,8 +471,11 @@ curl http://169.254.169.254/latest/meta-data/profile
 default-hvm(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="public_hostname"></a>
 ## Public hostname
 
 ```bash
@@ -422,8 +486,11 @@ curl http://169.254.169.254/latest/meta-data/public-hostname
 ec2-123-234-123-234.us-east-1.compute.amazonaws.com(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="public_ip4"></a>
 ## Public IP4
 
 ```bash
@@ -434,9 +501,10 @@ curl http://169.254.169.254/latest/meta-data/public-ipv4
 123.234.123.234(python3)
 ```
 
+[[Back to top]](#top)
 
 ---
-
+<a name="public_keys"></a>
 ## Public keys
 
 ```bash
@@ -447,8 +515,11 @@ curl http://169.254.169.254/latest/meta-data/public-keys/
 0=example_public_key(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="reservation_id"></a>
 ## Reservation ID
 
 ```bash
@@ -459,8 +530,11 @@ curl http://169.254.169.254/latest/meta-data/reservation-id/
 r-1d23bb4567f89e1c2(python3)
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="security_groups"></a>
 ## Security groups
 
 ```bash
@@ -471,8 +545,11 @@ curl http://169.254.169.254/latest/meta-data/security-groups
 example_security_group
 ```
 
+[[Back to top]](#top)
+
 ---
 
+<a name="services"></a>
 ## Services
 
 
@@ -504,3 +581,5 @@ curl http://169.254.169.254/latest/meta-data/services/partition
 ```bash
 aws(python3)
 ```
+
+[[Back to top]](#top)
